@@ -1,0 +1,67 @@
+<div>
+  <div id="heading" class="headline">
+    Awesome Address Book App!
+  </div>
+  <div ng-style="{'background-color': 'transparent'}">
+    <div class="btnCtn">
+      <form name="myForm" ng-style="{'margin': '0'}">
+        <input class="tabBtn" type="button" value="card view" ng-click="startCtrl.control.response = startCtrl.startPageService.toggle(startCtrl.control.response)"
+          ng-class="{'checked': startCtrl.control.response}">
+        <input class="tabBtnb" type="button" value="table view" ng-click="startCtrl.control.response = startCtrl.startPageService.toggle(startCtrl.control.response)"
+          ng-class="{'checked': startCtrl.control.response}">
+      </form>
+      <ui-view></ui-view>
+    </div>
+  </div>
+  <div class="contain">
+    <table style="width:100%" ng-show="startCtrl.control.response == true">
+      <tr>
+        <th>CompanyName</th>
+        <th>ContactName</th>
+        <th>ContactTitle</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>Email</th>
+        <th>PostalCode</th>
+        <th>Country</th>
+        <th>Phone</th>
+        <th>Fax</th>
+      </tr>
+      <tr ng-repeat="contact in startCtrl.startPageService.contacts" ng-style="{'font-size': 'small'}">
+        <th>{{contact.CompanyName}}</th>
+        <th>{{contact.ContactName}}</th>
+        <th>{{contact.ContactTitle}}</th>
+        <th>{{contact.Address}}</th>
+        <th>{{contact.City}}</th>
+        <th>{{contact.Email}}</th>
+        <th>{{contact.PostalCode}}</th>
+        <th>{{contact.Country}}</th>
+        <th>{{contact.Phone}}</th>
+        <th>{{contact.Fax}}</th>
+      </tr>
+    </table>
+    <div class="contain2" ng-init="limit = 10" ng-show="startCtrl.control.response == false">
+      <div class="contactContainer" ng-repeat="contact in startCtrl.startPageService.contacts | limitTo: limit as results">
+        <div id="id" ng-hide="contact.CompanyName == ''"> CustomerID: {{contact.CustomerID}} </div>
+        <div id="company">{{contact.CompanyName}} </div>
+        <div id="name">
+          <div> {{contact.ContactName}} </div>
+          <div> {{contact.ContactTitle}} </div>
+        </div>
+        <div id="contact">
+          <div> {{contact.Email}} </div>
+          <div> {{contact.Phone}} </div>
+          <div ng-show="contact.Fax !== ''"> Fax: {{contact.Fax}} </div>
+        </div>
+        <div id="address">
+          <div> {{contact.Address}} </div>
+          <div> {{contact.City}}, {{contact.Country}}, {{contact.PostalCode}} </div>
+        </div>
+      </div>
+      <span class="buttonContain">
+      <button class="showMorebutton" ng-hide="results.length === startCtrl.startPageService.contacts.length" ng-click="limit = limit +10">show more contacts...</button>
+      </span>
+    </div>
+  </div>
+</div>
+</div>
