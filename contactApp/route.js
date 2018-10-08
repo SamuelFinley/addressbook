@@ -7,7 +7,7 @@ let startPageState = {
    component: 'startPageComponent',
    resolve: {
        function(startPageService, $transition$) {
-         return startPageService.getTweets($transition$.params());
+         return startPageService.getContacts($transition$.params());
        }
  }}
 

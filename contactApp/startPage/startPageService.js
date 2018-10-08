@@ -9,7 +9,7 @@ angular.module('contactModule')
 
 
 
-  this.getTweets = () => {
+  this.getContacts = () => {
     var xhttp = new XMLHttpRequest();
     let address ={
       contacts : []
