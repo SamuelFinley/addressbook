@@ -85,7 +85,7 @@ angular.module('contactModule')
 
     this.search = (input, category) => {
 
-      let re = new RegExp(input, 'gi');
+      let re = new RegExp('\\b' + input+ '\\b', 'gi');
       let indicies = [];
       if (category == undefined || category === 'none'){
       let crudeGlobal = this.dupe.map(contact => {
