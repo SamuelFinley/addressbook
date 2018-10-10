@@ -94,7 +94,7 @@ tr:nth-child(even) {
 }
 .contain {
   display: flex;
-
+  padding-bottom: 20px;
   justify-content: space-around;
   background-color: #555555;
   padding-top: 1em;
@@ -178,11 +178,15 @@ tr:nth-child(even) {
   width: 100vw;
   justify-content: space-between;
 }
+
 .top{
   display: flex;
   background-color: #555555;
-  margin-bottom: 50px
+  margin-bottom: 50px;
+  border-bottom-style: solid;
+  border-bottom-color: 	#191970;
 }
+
 #heading {
   padding:0px;
   font-family: "Brush Script MT", cursive;
@@ -195,8 +199,6 @@ tr:nth-child(even) {
   color: rgb(230, 230, 230);
   text-shadow: 5px 5px 4px BLACK;
   background-color: #555555;
-  border-bottom-style: solid;
-  border-bottom-color: 	#191970;
 }
 .btnCtn{
   font-size: 1.5em;
