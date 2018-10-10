@@ -92,7 +92,7 @@ angular.module('contactModule')
         let aggregate = '';
         let i;
         for (i = 1; i < this.keys.length; i++) {
-          aggregate += contact[this.keys[i]]
+          aggregate += ' ' + contact[this.keys[i]]
         }
         return aggregate
       });
