@@ -27,7 +27,7 @@
   </div>
   <div class="contain">
     <table style="width:100%" ng-style="{'float': 'right'}"ng-show="startCtrl.control.response == true">
-      <tr>
+      <tr class="cats">
         <th id='CustomerID' ng-click="startCtrl.control.clicked = startCtrl.startPageService.contactSort($event, startCtrl.control.clicked[1])">CustomerID{{'CustomerID' === startCtrl.control.clicked[0] ? startCtrl.control.clicked[1] : ''}}</th>
         <th id='CompanyName' ng-click="startCtrl.control.clicked = startCtrl.startPageService.contactSort($event, startCtrl.control.clicked[1])">Company{{'CompanyName' === startCtrl.control.clicked[0] ? startCtrl.control.clicked[1] : ''}}</th>
         <th id='ContactName' ng-click="startCtrl.control.clicked = startCtrl.startPageService.contactSort($event, startCtrl.control.clicked[1])">Name{{'ContactName' === startCtrl.control.clicked[0] ? startCtrl.control.clicked[1] : ''}}</th>

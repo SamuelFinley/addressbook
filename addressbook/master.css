@@ -135,7 +135,15 @@ tr:nth-child(even) {
   display: inline-block;
   font-size: 16px;
 }
-
+.cats:hover {
+  cursor: pointer;
+}
+.tabBtnb:hover {
+  cursor: pointer;
+}
+.tabBtn:hover {
+  cursor: pointer;
+}
 .tabBtn:focus {
   outline:none;
 }
