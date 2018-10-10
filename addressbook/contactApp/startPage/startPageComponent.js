@@ -4,6 +4,10 @@ angular.module('contactModule')
   controller: 'startPageController',
   controllerAs: 'startCtrl',
   bindings: {
-    'toggle': '='
+    'toggle': '=',
+    'contactSort': '=',
+    'search': '=',
+    'colors': '=',
+    'show': '='
   }
 })

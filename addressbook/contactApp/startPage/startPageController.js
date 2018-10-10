@@ -4,6 +4,7 @@ angular.module('contactModule')
 
   this.control = {
     response: false,
+    clicked: [null, null]
   }
 
 }])

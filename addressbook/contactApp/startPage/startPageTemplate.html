@@ -1,7 +1,19 @@
 <div>
-  <div id="heading" class="headline">
+  <span class="top">
+  <div class="headline">
+    <h2 id="heading">
     Awesome Address Book App!
+  </h2>
+    <div class="searchContain">
+    <form class='search' ng-style="{'line-height': '12pt'}">
+      <select ng-model="category" ng-value='none' ng-options="x for x in startCtrl.startPageService.keys"><option value="none"></option></select>
+      <input type="text" placeholder="Search.." ng-model="name" name="search">
+      <button type="submit" ng-click="startCtrl.startPageService.search(name, category)">Submit</button>
+    </form>
+    <button ng-click="startCtrl.startPageService.show()">Show all</button>
   </div>
+  </div>
+</span>
   <div ng-style="{'background-color': 'transparent'}">
     <div class="btnCtn">
       <form name="myForm" ng-style="{'margin': '0'}">
@@ -14,20 +26,20 @@
     </div>
   </div>
   <div class="contain">
-    <table style="width:100%" ng-show="startCtrl.control.response == true">
+    <table style="width:100%" ng-style="{'float': 'right'}"ng-show="startCtrl.control.response == true">
       <tr>
-        <th>CompanyName</th>
-        <th>ContactName</th>
-        <th>ContactTitle</th>
-        <th>Address</th>
-        <th>City</th>
-        <th>Email</th>
-        <th>PostalCode</th>
-        <th>Country</th>
-        <th>Phone</th>
-        <th>Fax</th>
+        <th id='CompanyName' ng-model="symbol" ng-click="startCtrl.control.clicked = startCtrl.startPageService.contactSort($event, startCtrl.control.clicked[1])">CompanyName{{'CompanyName' === startCtrl.control.clicked[0] ? startCtrl.control.clicked[1] : ''}}</th>
+        <th id='ContactName' ng-click="startCtrl.control.clicked = startCtrl.startPageService.contactSort($event, startCtrl.control.clicked[1])">ContactName{{'ContactName' === startCtrl.control.clicked[0] ? startCtrl.control.clicked[1] : ''}}</th>
+        <th id='ContactTitle' ng-click="startCtrl.control.clicked = startCtrl.startPageService.contactSort($event, startCtrl.control.clicked[1])">ContactTitle{{'ContactTitle' === startCtrl.control.clicked[0] ? startCtrl.control.clicked[1] : ''}}</th>
+        <th id='Address' ng-click="startCtrl.control.clicked = startCtrl.startPageService.contactSort($event, startCtrl.control.clicked[1])">Address{{'Address' === startCtrl.control.clicked[0] ? startCtrl.control.clicked[1] : ''}}</th>
+        <th id='City' ng-click="startCtrl.control.clicked = startCtrl.startPageService.contactSort($event, startCtrl.control.clicked[1])">City{{'City' === startCtrl.control.clicked[0] ? startCtrl.control.clicked[1] : ''}}</th>
+        <th id='Email' ng-click="startCtrl.control.clicked = startCtrl.startPageService.contactSort($event, startCtrl.control.clicked[1])">Email{{'Email' === startCtrl.control.clicked[0] ? startCtrl.control.clicked[1] : ''}}</th>
+        <th id='PostalCode' ng-click="startCtrl.control.clicked = startCtrl.startPageService.contactSort($event, startCtrl.control.clicked[1])">PostalCode{{'PostalCode' === startCtrl.control.clicked[0] ? startCtrl.control.clicked[1] : ''}}</th>
+        <th id='Country' ng-click="startCtrl.control.clicked = startCtrl.startPageService.contactSort($event, startCtrl.control.clicked[1])">Country{{'Country' === startCtrl.control.clicked[0] ? startCtrl.control.clicked[1] : ''}}</th>
+        <th id='Phone' ng-click="startCtrl.control.clicked = startCtrl.startPageService.contactSort($event, startCtrl.control.clicked[1])">Phone{{'Phone' === startCtrl.control.clicked[0] ? startCtrl.control.clicked[1] : ''}}</th>
+        <th id='Fax' ng-click="startCtrl.control.clicked = startCtrl.startPageService.contactSort($event, startCtrl.control.clicked[1])">Fax{{'Fax' === startCtrl.control.clicked[0] ? startCtrl.control.clicked[1] : ''}}</th>
       </tr>
-      <tr ng-repeat="contact in startCtrl.startPageService.contacts" ng-style="{'font-size': 'small'}">
+      <tr ng-repeat="contact in startCtrl.startPageService.dupe" ng-style="{'font-size': 'small', 'background-color': startCtrl.startPageService.indx.includes(contact.idx) ? 'yellow' : startCtrl.startPageService.colors($index)}"  ng-class="{'selected': startCtrl.startPageService.indx.includes($index)}">
         <th>{{contact.CompanyName}}</th>
         <th>{{contact.ContactName}}</th>
         <th>{{contact.ContactTitle}}</th>
@@ -41,7 +53,7 @@
       </tr>
     </table>
     <div class="contain2" ng-init="limit = 10" ng-show="startCtrl.control.response == false">
-      <div class="contactContainer" ng-repeat="contact in startCtrl.startPageService.contacts | limitTo: limit as results">
+      <div class="contactContainer" ng-repeat="contact in startCtrl.startPageService.dupe2 | limitTo: limit as results">
         <div id="id" ng-hide="contact.CompanyName == ''"> CustomerID: {{contact.CustomerID}} </div>
         <div id="company">{{contact.CompanyName}} </div>
         <div id="name">
@@ -53,7 +65,7 @@
           <div> {{contact.Phone}} </div>
           <div ng-show="contact.Fax !== ''"> Fax: {{contact.Fax}} </div>
         </div>
-        <div id="address">
+        <div id="addresses">
           <div> {{contact.Address}} </div>
           <div> {{contact.City}}, {{contact.Country}}, {{contact.PostalCode}} </div>
         </div>
